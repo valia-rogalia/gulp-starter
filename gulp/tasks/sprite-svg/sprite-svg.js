@@ -50,7 +50,9 @@ gulp.task('sprite:svg', function() {
                     symbols: data
                 }))
                 .pipe(gulp.dest(config.src.sassGen));
-            gulp.src(__dirname + '/sprite.html')
+            gulp.src(__dirname + '/sprite.html',{
+										allowEmpty: true
+								})
                 .pipe(consolidate('lodash', {
                     symbols: data
                 }))
