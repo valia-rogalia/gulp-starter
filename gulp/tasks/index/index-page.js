@@ -15,6 +15,6 @@ gulp.task('list-pages', function() {
 });
 
 gulp.task('list-pages:watch', function() {
-    gulp.watch([config.src.root+'/*', 'gulp/tasks/index/index.html'], ['list-pages']);
+    gulp.watch([config.src.root+'/*', 'gulp/tasks/index/index.html'], gulp.series(['list-pages']));
 });
 

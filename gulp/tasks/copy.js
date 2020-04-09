@@ -34,15 +34,13 @@ gulp.task('copy:img', function () {
         .pipe(gulp.dest(config.dest.img));
 });
 
-gulp.task('copy', function () {
-	gulp.series([
+gulp.task('copy', gulp.series([
 		'copy:img',
 		// 'copy:rootfiles',
 		// 'copy:lib',
 		// 'copy:data',
 		'copy:fonts'
-	])
-});
+	]));
 
 // gulp.task('copy:watch', function () {
 //     gulp.watch(config.src.img + '/*', ['copy']);
