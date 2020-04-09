@@ -4,9 +4,9 @@ var config      = require('../config');
 
 gulp.task('default', function(cb) {
     runSequence(
-        'build:dev',
+				'build:dev',
         'watch',
-        'server',
+				'server',
         cb
     );
 });
