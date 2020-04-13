@@ -33,8 +33,9 @@ gulp.task('sass', function() {
         .pipe(gulp.dest(config.dest.css));
 });
 
-gulp.task('sass:watch', function() {
+gulp.task('sass:watch', function(cb) {
     gulp.watch([config.src.sass + '/**/*.{sass,scss}'], gulp.series(['sass']));
+    cb();
 });
 
 function isMax(mq) {

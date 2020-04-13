@@ -42,9 +42,7 @@ gulp.task('copy', gulp.series([
 		'copy:fonts'
 	]));
 
-// gulp.task('copy:watch', function () {
-//     gulp.watch(config.src.img + '/*', ['copy']);
-// });
-gulp.task('copy:watch', function () {
-	gulp.watch([config.src.img + '/*',config.src.fonts + '/*'], gulp.series(['copy']));
+gulp.task('copy:watch', function (cb) {
+  gulp.watch([config.src.img + '/*',config.src.fonts + '/*'], gulp.series(['copy']));
+  cb();
 });

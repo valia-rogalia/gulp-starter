@@ -26,6 +26,7 @@ gulp.task('svgo', function() {
         .pipe(gulp.dest(config.dest.img));
 });
 
-gulp.task('svgo:watch', function() {
+gulp.task('svgo:watch', function(cb) {
     gulp.watch([config.src.img + '/svgo/**/*.svg'], gulp.series(['svgo']));
+    cb();
 });

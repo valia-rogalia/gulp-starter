@@ -32,7 +32,8 @@ gulp.task('pug:changed', function() {
     return renderHtml(true);
 });
 
-gulp.task('pug:watch', function() {
+gulp.task('pug:watch', function(cb) {
     gulp.watch([config.src.templates + '/**/_*.pug'], gulp.series(['pug']));
     gulp.watch([config.src.templates + '/**/[^_]*.pug'], gulp.series(['pug:changed']));
+    cb();
 });
