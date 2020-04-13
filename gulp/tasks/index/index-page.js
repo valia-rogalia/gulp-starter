@@ -19,3 +19,25 @@ gulp.task('list-pages:watch', function(cb) {
     cb();
 });
 
+
+
+
+
+
+
+
+function listPages() {
+  delete require.cache[require.resolve('../../../' + config.src.pagelist)]
+  var pages = require('../../../' + config.src.pagelist);
+  return gulp
+          .src(__dirname + '/index.html')
+          .pipe(consolidate('lodash', {
+              pages: pages
+          }))
+          .pipe(gulp.dest(config.dest.html));
+}
+
+module.exports = {
+  listPages,
+}
+

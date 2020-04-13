@@ -28,11 +28,11 @@ function handler(err, stats, cb) {
     if (typeof cb === 'function') cb();
 }
 
-gulp.task('webpack', function(cb) {
-    webpack(webpackConfig(config.env)).run(function(err, stats) {
-        handler(err, stats, cb);
-    });
-});
+// gulp.task('webpack', function(cb) {
+//     webpack(webpackConfig(config.env)).run(function(err, stats) {
+//         handler(err, stats, cb);
+//     });
+// });
 
 // gulp.task('webpack:watch', function(cb) {
 //     webpack(webpackConfig(config.env)).watch({
@@ -42,11 +42,11 @@ gulp.task('webpack', function(cb) {
 //     cb();
 // });
 
-// function webpack(cb) {
-//   webpack(webpackConfig(config.env)).run(function(err, stats) {
-//     handler(err, stats, cb);
-//   });
-// }
+function webpack(cb) {
+  webpack(webpackConfig(config.env)).run(function(err, stats) {
+    handler(err, stats, cb);
+  });
+}
 
 function webpackWatch(cb) {
 	webpack(webpackConfig(config.env)).watch({
@@ -56,4 +56,7 @@ function webpackWatch(cb) {
   cb()
 }
 
-export default { webpackWatch }
+module.exports = { 
+                    webpack,
+                    webpackWatch
+                 };

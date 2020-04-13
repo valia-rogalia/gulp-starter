@@ -19,19 +19,19 @@ var processors = [
     csso
 ];
 
-gulp.task('sass', function() {
-    return gulp
-        .src(config.src.sass + '/*.{sass,scss}')
-        .pipe(sourcemaps.init())
-        .pipe(sass({
-            outputStyle: config.production ? 'compact' : 'expanded', // nested, expanded, compact, compressed
-            precision: 5
-        }))
-        .on('error', config.errorHandler)
-        .pipe(postcss(processors))
-        .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest(config.dest.css));
-});
+// gulp.task('sass', function() {
+//     return gulp
+//         .src(config.src.sass + '/*.{sass,scss}')
+//         .pipe(sourcemaps.init())
+//         .pipe(sass({
+//             outputStyle: config.production ? 'compact' : 'expanded', // nested, expanded, compact, compressed
+//             precision: 5
+//         }))
+//         .on('error', config.errorHandler)
+//         .pipe(postcss(processors))
+//         .pipe(sourcemaps.write('./'))
+//         .pipe(gulp.dest(config.dest.css));
+// });
 
 gulp.task('sass:watch', function(cb) {
     gulp.watch([config.src.sass + '/**/*.{sass,scss}'], gulp.series(['sass']));
@@ -61,4 +61,26 @@ function sortMediaQueries(a, b) {
     }
 
     return 1;
+}
+
+
+
+
+
+function sass() {
+  return gulp
+          .src(config.src.sass + '/*.{sass,scss}')
+          .pipe(sourcemaps.init())
+          .pipe(sass({
+              outputStyle: config.production ? 'compact' : 'expanded', // nested, expanded, compact, compressed
+              precision: 5
+          }))
+          .on('error', config.errorHandler)
+          .pipe(postcss(processors))
+          .pipe(sourcemaps.write('./'))
+          .pipe(gulp.dest(config.dest.css));
+}
+
+module.exports = {
+  sass,
 }
