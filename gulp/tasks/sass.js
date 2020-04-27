@@ -34,38 +34,32 @@ var processors = [
 // });
 
 gulp.task('sass:watch', function(cb) {
-    gulp.watch([config.src.sass + '/**/*.{sass,scss}'], gulp.series(['sass']));
-    cb();
+  gulp.watch([config.src.sass + '/**/*.{sass,scss}'], gulp.series(['sass']));
+  cb();
 });
 
 function isMax(mq) {
-    return /max-width/.test(mq);
+  return /max-width/.test(mq);
 }
 
 function isMin(mq) {
-    return /min-width/.test(mq);
+  return /min-width/.test(mq);
 }
 
 function sortMediaQueries(a, b) {
-    A = a.replace(/\D/g, '');
-    B = b.replace(/\D/g, '');
+  A = a.replace(/\D/g, '');
+  B = b.replace(/\D/g, '');
 
-    if (isMax(a) && isMax(b)) {
-        return B - A;
-    } else if (isMin(a) && isMin(b)) {
-        return A - B;
-    } else if (isMax(a) && isMin(b)) {
-        return 1;
-    } else if (isMin(a) && isMax(b)) {
-        return -1;
-    }
-
-    return 1;
+  if (isMax(a) && isMax(b)) {
+      return B - A;
+  } else if (isMin(a) && isMin(b)) {
+      return A - B;
+  } else if (isMax(a) && isMin(b)) {
+      return 1;
+  } else if (isMin(a) && isMax(b)) {
+      return -1;
+  }
 }
-
-
-
-
 
 function sass() {
   return gulp
@@ -82,5 +76,5 @@ function sass() {
 }
 
 module.exports = {
-  sass,
+  sass
 }
