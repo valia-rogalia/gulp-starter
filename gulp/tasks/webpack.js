@@ -57,6 +57,6 @@ function webpackWatch(cb) {
 }
 
 module.exports = { 
-                    webpack,
-                    webpackWatch
-                 };
+  webpack,
+  webpackWatch
+};

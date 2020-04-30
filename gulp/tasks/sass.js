@@ -61,18 +61,32 @@ function sortMediaQueries(a, b) {
   }
 }
 
-function sass() {
-  return gulp
-          .src(config.src.sass + '/*.{sass,scss}')
-          .pipe(sourcemaps.init())
-          .pipe(sass({
-              outputStyle: config.production ? 'compact' : 'expanded', // nested, expanded, compact, compressed
-              precision: 5
-          }))
-          .on('error', config.errorHandler)
-          .pipe(postcss(processors))
-          .pipe(sourcemaps.write('./'))
-          .pipe(gulp.dest(config.dest.css));
+function sass(cb) {
+  // return gulp
+  //         .src(config.src.sass + '/*.{sass,scss}')
+  //         .pipe(sourcemaps.init())
+  //         .pipe(sass({
+  //             outputStyle: config.production ? 'compact' : 'expanded', // nested, expanded, compact, compressed
+  //             precision: 5
+  //         }))
+  //         .on('error', config.errorHandler)
+  //         .pipe(postcss(processors))
+  //         .pipe(sourcemaps.write('./'))
+  //         .pipe(gulp.dest(config.dest.css));
+
+  gulp
+    .src(config.src.sass + '/*.{sass,scss}')
+    .pipe(sourcemaps.init())
+    .pipe(sass({
+        outputStyle: config.production ? 'compact' : 'expanded', // nested, expanded, compact, compressed
+        precision: 5
+    }))
+    .on('error', config.errorHandler)
+    .pipe(postcss(processors))
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(config.dest.css));
+  
+  cb();
 }
 
 module.exports = {

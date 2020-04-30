@@ -17,10 +17,10 @@ function build(cb) {
     spriteSvg,
     svgo,
     sass,
-    pug,
-    webpack,
-    copy,
-    listPages,
+    // pug,
+    // webpack,
+    // copy,
+    // listPages,
     cb
   );
 }
